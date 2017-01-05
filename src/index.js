@@ -1,3 +1,5 @@
 const sum = require('./sum');
 
-console.log(sum(55, 4));
+const total = sum(55, 4);
+
+console.log(total);
