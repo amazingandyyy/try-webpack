@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "build/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 5);
@@ -86,9 +86,14 @@ __webpack_require__(2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var image = document.createElement('img');
-image.src = 'http://lorempixel.com/300/300';
+image.src = _small2.default;
 
 document.body.appendChild(image);
+
+var imageBig = document.createElement('img');
+imageBig.src = _big2.default;
+
+document.body.appendChild(imageBig);
 
 /***/ },
 /* 1 */
