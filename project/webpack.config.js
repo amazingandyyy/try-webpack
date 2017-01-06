@@ -1,11 +1,28 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const VENDER_LIBS = [
+  "faker",
+  "lodash",
+  "react",
+  "react-dom",
+  "react-input-range",
+  "react-redux",
+  "react-router",
+  "redux",
+  "redux-form",
+  "redux-thunk"
+]
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    bundle: './src/index.js',
+    vendor: VENDER_LIBS
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -13,11 +30,20 @@ module.exports = {
         use: 'babel-loader',
         test: /\.js$/,
         exclude: /node_modules/
-      },
-      {
-        use: ['style-loader', 'css-loader'],
+      }, {
+        use: [
+          'style-loader', 'css-loader'
+        ],
         test: /\.css$/
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+  ]
 };
